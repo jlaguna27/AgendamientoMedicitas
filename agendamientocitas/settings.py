@@ -25,7 +25,7 @@ SECRET_KEY = 'hw9rkn(yqe!7*9514oo9y5ubd6oz0x!1vvy^4dvg-cy_2p2%(w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agendamedicitas.herokuapp.com']
 
 
 # Application definition
