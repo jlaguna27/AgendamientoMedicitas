@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Ver Usuarios disponibles</h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+    {% if perms.auth.add_user %}
+        <input type="button" class="btn btn-success" onclick="location.href='/addprofile'" value="Agregar Usuario"/>
+    {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Nombre de Usuario</td>
+                <td>Correo Electronico</td>
+                <td>Usuario Permitido</td>
+                {% if perms.auth.change_user %}
+                    <td>Editar</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in object_list %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.is_staff }}</td>
+                    {% if perms.auth.change_user %}
+                        <td> <input type="button" onclick="location.href='/edituser/{{ user.id }}'" value="Editar"> </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Citas Medicas Registradas</h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+        {% if perms.citas.add_citamedica %}
+              <div class="pull-right hidden-xs"
+              </div>
+            <input type="button" class="btn btn-success" onclick=" location.href='/addcita'" value="Agregar Cita Medica"/>
+        {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Tipo de Cita</td>
+                <td>Estado</td>
+                <td>Costo</td>
+                <td>Fecha</td>
+                <td>Costo</td>
+                <td>Pago</td>
+                <td>Descripción</td>
+                <td>Paciente</td>
+                <td>Medico</td>
+                {% if perms.citas.change_citamedica %}
+                    <td>Editar</td>
+                {% endif %}
+                {% if perms.citas.del_citamedica %}
+                    <td>Eliminar</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for citamedica in object_list %}
+                <tr>
+                    <td>{{ citamedica.tipocita }}</td>
+                    <td>{{ citamedica.get_estado_display }}</td>
+                    <td>{{ citamedica.costo }}</td>
+                    <td>{{ citamedica.fecha }}</td>
+                    <td>{{ citamedica.costo }}</td>
+                    <td>{{ citamedica.get_pago_display }}</td>
+                    <td>{{ citamedica.descripcion }}</td>
+                    <td>{{ citamedica.paciente }}</td>
+                    <td>{{ citamedica.medico }}</td>
+                    {% if perms.citas.change_citamedica %}
+                        <td> <input type="button" onclick="location.href='/editcita/{{ citamedica.id }}'"
+                                    value="Editar"> </td>
+                    {% endif %}
+                    {% if perms.citas.del_citamedica %}
+                        <td> <input type="button" onclick="location.href='/deletcita/{{ citamedica.id }}'"
+                                    value="Eliminar"> </td>
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+</div>
+</div>
+{% endblock %}

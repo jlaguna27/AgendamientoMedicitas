@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Eliminar Medico {% endblock %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Eliminar Medico </h2>
+
+</div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Eliminar"/>
+        <input type="button" class="btn btn-success" onclick=" location.href='/viewmedico'" value="Cancelar"/>
+    </form>
+<!-- /.box-body -->
+</div>
+{% endblock %}

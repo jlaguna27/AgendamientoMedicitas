@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Pacientes Inscritos </h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+    {% if perms.citas.add_paciente %}
+        <input type="button" class="btn btn-success" onclick="location.href='/addpaciente'" value="Agregar Paciente"/>
+    {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Nombre del Paciente</td>
+                <td>Eps</td>
+                <td>Vinculacion EPS</td>
+                {% if perms.citas.change_paciente %}
+                    <td>Editar</td>
+                {% endif %}
+                {% if perms.citas.del_paciente %}
+                    <td>Eliminar</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in object_list %}
+                <tr>
+                    <td>{{ paciente.user.first_name }} {{ paciente.user.last_name }}</td>
+                    <td>{{ paciente.eps  }}</td>
+                    <td>{{ paciente.get_vinculacion_display  }}</td>
+                    {% if perms.citas.change_paciente %}
+                        <td> <input type="button" onclick="location.href='/editpaciente/{{ paciente.id }}'"
+                                    value="Editar"> </td>
+                    {% endif %}
+                    {% if perms.citas.del_paciente %}
+                        <td> <input type="button" onclick="location.href='/deletepaciente/{{ paciente.id }}'"
+                                    value="Eliminar"> </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}

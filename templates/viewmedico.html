@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Medicos Disponibles </h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+    {% if perms.citas.add_citamedica %}
+        <input type="button" class="btn btn-success" onclick="location.href='/addmedico'" value="Agregar Medico"/>
+    {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Nombre del Medico</td>
+                <td>Especialidad</td>
+                {% if perms.citas.change_medico %}
+                    <td>Editar</td>
+                {% endif %}
+                {% if perms.citas.del_medico %}
+                    <td>Eliminar</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for medico in object_list %}
+                <tr>
+                    <td>{{ medico.user.first_name }} {{ medico.user.last_name }}</td>
+                    <td>{{ medico.especialidad  }}</td>
+                    {% if perms.citas.change_medico %}
+                        <td> <input type="button" onclick="location.href='/editmedico/{{ medico.id }}'"
+                                    value="Editar"> </td>
+                    {% endif %}
+                    {% if perms.citas.del_medico %}
+                        <td> <input type="button" onclick="location.href='/deletmedico/{{ medico.id }}'"
+                                    value="Eliminar"> </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}

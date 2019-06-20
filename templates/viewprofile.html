@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Perfiles Registrados</h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+        {% if perms.citas.add_profile %}
+            <input type="button" class="btn btn-success" onclick=" location.href='/addprofile'" value="Agregar Perfil"/>
+        {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Numero de Documento</td>
+                <td>Numero de Telefono</td>
+                <td>Fecha de Nacimiento</td>
+                <td>Genero</td>
+                <td>Usuario</td>
+                <td>Email</td>
+                {% if perms.citas.change_profile %}
+                    <td>Editar</td>
+                {% endif %}
+            {% if perms.citas_del_profile %}
+                <td>Eliminar</td>
+            {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in object_list %}
+                <tr>
+                    <td>{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
+                    <td>{{ profile.documento }}</td>
+                    <td>{{ profile.telefono }}</td>
+                    <td>{{ profile.nacimiento }}</td>
+                    <td>{{ profile.get_genero_display }}</td>
+                    <td>{{ profile.user.username }}</td>
+                    <td>{{ profile.user.email }}</td>
+                    {% if perms.citas.change_profile %}
+                        <td> <input type="button" onclick="location.href='/editprofile/{{ profile.id }}'" value="Editar"> </td>
+                    {% endif %}
+                    {% if perms.citas_del_profile %}
+                        <td> <input type="button" onclick="location.href='/deletprofile/{{ profile.id }}'" value="Eliminar"> </td>
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+</div>
+{% endblock %}

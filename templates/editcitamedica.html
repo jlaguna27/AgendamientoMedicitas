@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load addform %}
+{% block title %}Agregar Citas Medicas{%endblock%}
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar Cita</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form action=" " method="post">
+            {% csrf_token %}
+          <div class="box-body">
+                <div class="form-group">
+                  <label for="id_tipocita">Tipo Cita</label>
+                  {{ form.tipocita|add:'class="form-control" placeholder="Tipo cita"' }}
+                </div>
+
+                <div class="form-group">
+                   <label for="id_estado">Estado</label>
+                  {{ form.estado|add:'class="form-control" placeholder="Estado"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_fecha">Fecha de la Cita</label>
+                  {{ form.fecha|add:'class="form-control" placeholder="Fecha Asignar"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_costo">costo</label>
+                  {{ form.costo|add:'class="form-control" placeholder="Costos"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_pago">Pago</label>
+                  {{ form.pago|add:'class="form-control" placeholder="Pago"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_descripcion">Descripción</label>
+                  {{ form.descripcion|add:'class="form-control" placeholder="Descripción"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_medico">Medico a Asignar</label>
+                  {{ form.medico|add:'class="form-control" placeholder="Medico"' }}
+                </div>
+
+                <div class="form-group">
+                  <label for="id_paciente">Paciente</label>
+                  {{ form.paciente|add:'class="form-control" placeholder="Paciente"' }}
+                </div>
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" onclick="location.href='/viewcita'" class="btn btn-primary">Cancelar</button>
+                </div>
+        </form>
+    </div>
+{% endblock %}

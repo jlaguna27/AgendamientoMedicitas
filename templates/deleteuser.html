@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Eliminar Usuario{% endblock %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Eliminar Usuario </h3>
+
+</div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Eliminar"/>
+        <input type="button" class="btn btn-success" onclick=" location.href='/viewuser'"
+               value="Cancelar"/>
+    </form>
+<!-- /.box-body -->
+</div>
+{% endblock %}

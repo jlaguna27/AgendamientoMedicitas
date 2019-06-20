@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load addform %}
+{% block title %}Editar un Medico{%endblock%}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+          <h2 class="box-title">Editar un Medico</h2>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form action=" " method="post">
+            {% csrf_token %}
+          <div class="box-body">
+                <div class="form-group">
+                  <label for="id_tipocita">Especialidad</label>
+                  {{ form.especialidad|add:'class="form-control" placeholder="Tipo cita"' }}
+                </div>
+
+                <div class="form-group">
+                   <label for="id_estado">Usuario</label>
+                  {{ form.user|add:'class="form-control" placeholder="Estado"' }}
+                </div>
+
+                </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" onclick="location.href='/viewmedico'"
+                                class="btn btn-primary">Cancelar</button>
+                </div>
+        </form>
+    </div>
+{% endblock %}

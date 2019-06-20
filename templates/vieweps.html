@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="box">
+    <div class="box-header">
+      <h2 class="box-title">Empresas Prestadoras de Salud (EPS) </h2>
+</div>
+
+<div class="box">
+    <div class="box-header">
+    {% if perms.citas.add_eps %}
+        <input type="button" class="btn btn-success" onclick=" location.href='/addeps'" value="Agregar EPS"/>
+    {% endif %}
+</div>
+
+<div class="box-body no-padding">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Nombre de la EPS</td>
+                <td>Regimen</td>
+                {% if perms.citas_change_eps %}
+                    <td>Editar</td>
+                {% endif %}
+                {% if perms.citas.del_eps %}
+                    <td>Eliminar</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for eps in object_list %}
+                <tr>
+                    <td>{{ eps.eps }}</td>
+                    <td>{{ eps.get_regimen_display}}</td>
+                    {% if perms.citas_change_eps %}
+                        <td> <input type="button" onclick="location.href='/editeps/{{ eps.id }}'" value="Editar"> </td>
+                    {% endif %}
+                    {% if perms.citas.del_eps %}
+                        <td> <input type="button" onclick="location.href='/deleteps/{{ eps.id }}'" value="Eliminar"> </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}
