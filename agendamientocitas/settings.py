@@ -75,14 +75,24 @@ WSGI_APPLICATION = 'agendamientocitas.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd6iij8a2bcjgb8',
+        'USER': 'eyitkxlfzkadhb',
+        'PASSWORD': 'b0934e21cd565d8935256c11117c6d6cf04a7afe47e02737f32e26e240d3ee30',
+        'HOST': 'ec2-54-225-76-136.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -129,4 +139,4 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/viewcita'
 LOGOUT_REDIRECT_URL = '/login'
 
-INTERNAL_IPS = ('localhost', '127.0.0.1', )
+#INTERNAL_IPS = ('localhost', '127.0.0.1', )
