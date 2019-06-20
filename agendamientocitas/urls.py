@@ -53,7 +53,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(), name='logout'),
 ]
 
-"""
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
@@ -63,4 +62,3 @@ if settings.DEBUG:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
 
     ] + urlpatterns
-"""

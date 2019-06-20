@@ -139,4 +139,4 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/viewcita'
 LOGOUT_REDIRECT_URL = '/login'
 
-#INTERNAL_IPS = ('localhost', '127.0.0.1', )
+INTERNAL_IPS = ('localhost', '127.0.0.1', )
