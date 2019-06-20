@@ -1,1 +1,1 @@
-web: gunicorn citasmedicas.wsgi --bind 0.0.0.0:$PORT
+web: gunicorn agendamientoMedicitas.wsgi --bind 0.0.0.0:$PORT
