@@ -14,7 +14,7 @@ venv/*
 __pycache__*
 build/
 develop-eggs/
-#dist/
+dist/
 downloads/
 eggs/
 .eggs/
@@ -89,9 +89,9 @@ celerybeat-schedule
 #.env
  
 # virtualenv
-.venv
-venv/
-ENV/
+#.venv
+#venv/
+#ENV/
  
 # Spyder project settings
 .spyderproject
