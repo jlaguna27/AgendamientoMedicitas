@@ -22,6 +22,7 @@ from citas.views import Viewcitamedica, Addcitamedica, Editcitamedica, Deletcita
     Deleteps, Viewmedico, Addmedico, Editmedico, Deletmedico, Viewpaciente, Addpaciente, Editpaciente, Deletpaciente, \
     Viewprofile, Addprofile, Editprofile, Deletprofile, Viewuser, Deletuser, Edituser
 from django.contrib.auth.views import LogoutView, LoginView, PasswordResetView, PasswordResetConfirmView
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,6 +52,8 @@ urlpatterns = [
 
     path('login', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
+
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]
 
 if settings.DEBUG:

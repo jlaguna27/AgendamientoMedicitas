@@ -144,4 +144,4 @@ LOGIN_REDIRECT_URL = '/viewcita'
 LOGOUT_REDIRECT_URL = '/login'
 
 INTERNAL_IPS = ('localhost', '127.0.0.1', )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
